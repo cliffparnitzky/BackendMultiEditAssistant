@@ -1,0 +1,30 @@
+/*.tl_formbody_submit {
+	border: 0px;
+	position: fixed;
+	right: 10px;
+	top: 200px;
+	cursor: move;
+}
+
+.tl_submit_container:before {
+	float: left;
+	margin-bottom: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.tl_submit_container {
+	background: url("move.png") top right no-repeat #B3B6B3;
+	float: left;
+	border: 0px;
+	padding: 5px;
+	border-radius: 10px 10px 10px 10px;
+	min-width: 90px;
+}
+
+.tl_submit_container input, .tl_submit_container button {
+	width: 100%;
+	float: left;
+	clear: left;
+}*/
