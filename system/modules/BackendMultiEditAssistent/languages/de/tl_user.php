@@ -32,4 +32,9 @@
  */
 $GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistent'] = array('Mehrfachbearbeiten Assistent verwenden', 'Geben Sie an, ob Sie den Mehrfachbearbeiten Assistent im Backend verwenden wollen.');
 
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_user']['backend-extended_legend'] = 'Backend-Einstellungen (erweitert)';
+
 ?>

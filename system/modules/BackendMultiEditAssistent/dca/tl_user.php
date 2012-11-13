@@ -37,10 +37,18 @@ foreach ($GLOBALS['TL_DCA']['tl_user']['palettes'] as $key => $row) {
 
 		$arrPalettes = explode(";", $row);
 		
+		$backendPalletIndex = 0;
+		$backendExtendedPalletFound = false;
 		foreach ($arrPalettes as $index => $pallet) {
-			if (strpos($pallet, "backend_legend") !== FALSE) {
+			if (strpos($pallet, "backend-extended_legend") !== false) {
 				$arrPalettes[$index] = $pallet . ",useBackendMultiEditAssistent";
+				$backendExtendedPalletFound = true;
+			} else if (strpos($pallet, "backend_legend") !== false) {
+				$backendPalletIndex = $index;
 			}
+		}
+		if (!$backendExtendedPalletFound) {
+			array_insert($arrPalettes, $backendPalletIndex + 1, '{backend-extended_legend},useBackendMultiEditAssistent', false);
 		}
 		
 		$GLOBALS['TL_DCA']['tl_user']['palettes'][$key] = implode(";", $arrPalettes);
