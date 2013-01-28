@@ -23,18 +23,18 @@
 * PHP version 5
 * @copyright  Cliff Parnitzky 2012
 * @author     Cliff Parnitzky
-* @package    BackendMultiEditAssistent
+* @package    BackendMultiEditAssistant
 * @license    LGPL
 */
 
 /**
-* Class BackendMultiEditAssistent
+* Class BackendMultiEditAssistant
 *
-* Adds misc functions and initializes the assistent.
+* Adds misc functions and initializes the assistant.
 * @copyright  Cliff Parnitzky 2012
 * @author     Cliff Parnitzky
 */
-class BackendMultiEditAssistent extends Backend {
+class BackendMultiEditAssistant extends Backend {
 	/**
 	 * Initialize the object, import the user class file
 	 */
@@ -49,11 +49,11 @@ class BackendMultiEditAssistent extends Backend {
 	*/
 	public function addStaticConfiguration($strName, $strLanguage) {
 		if ($this->User->useBackendFloatingFooter) {
-			$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistent/html/assistent.css';
-			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/BackendMultiEditAssistent/html/assistent.js';
+			$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/html/assistant.css';
+			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/BackendMultiEditAssistant/html/assistant.js';
 			
 			// make sure the hook is only executed once
-			unset($GLOBALS['TL_HOOKS']['loadLanguageFile']['BackendMultiEditAssistentHook']);
+			unset($GLOBALS['TL_HOOKS']['loadLanguageFile']['BackendMultiEditAssistantHook']);
 		}
 	}
 	
@@ -62,7 +62,7 @@ class BackendMultiEditAssistent extends Backend {
 	*/
 	public function addTranslatedConfiguration($strContent, $strTemplate) {
 		if ($strTemplate == 'be_main' && $this->User->useBackendFloatingFooter) {
-			$strContent = preg_replace('/<\/head>/', "<style type=\"text/css\"> /* maybe we need some translated css here */ </style>\n$0", $strContent, 1);
+			$strContent = preg_replace('/<\/head>/', "<style type=\"text/css\">.tl_submit_container:before {content: \"" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle'] . "\";}</style>\n$0", $strContent, 1);
 			return preg_replace('/<\/body>/', "<script type=\"text/javascript\"> /* maybe we need some translated javascript or mootools initializing here */ </script>\n$0", $strContent, 1);
 		}
 		return $strContent;

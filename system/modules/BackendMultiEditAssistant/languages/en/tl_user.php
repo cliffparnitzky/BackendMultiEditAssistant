@@ -23,14 +23,14 @@
  * PHP version 5
  * @copyright  Cliff Parnitzky 2012
  * @author     Cliff Parnitzky
- * @package    BackendMultiEditAssistent
+ * @package    BackendMultiEditAssistant
  * @license    LGPL
  */
 
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistent'] = array('Use multi edit assistent', 'Select if you want to use the multi edit assistent in the backend.');
+$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistant'] = array('Use multi edit assistant', 'Select if you want to use the multi edit assistant in the backend.');
 
 /**
  * Legends

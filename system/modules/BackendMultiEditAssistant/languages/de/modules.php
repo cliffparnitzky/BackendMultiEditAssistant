@@ -23,13 +23,13 @@
  * PHP version 5
  * @copyright  Cliff Parnitzky 2012
  * @author     Cliff Parnitzky
- * @package    BackendMultiEditAssistent
+ * @package    BackendMultiEditAssistant
  * @license    LGPL
  */
 
 /**
  * Define name and tooltip for preferences (inactive modules)
  */
-$GLOBALS['TL_LANG']['MOD']['BackendMultiEditAssistent'] = array('Backend Mehrfachbearbeiten Assistent', 'Stellt einen Assistenten zur Verfügung, der das Ausfüllen der Felder beim Mehrfachbearbeiten erleichtert.');
+$GLOBALS['TL_LANG']['MOD']['BackendMultiEditAssistant'] = array('Backend Mehrfachbearbeiten Assistent', 'Stellt einen Assistenten zur Verfügung, der das Ausfüllen der Felder beim Mehrfachbearbeiten erleichtert.');
 
 ?>

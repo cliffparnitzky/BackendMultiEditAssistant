@@ -1,7 +1,7 @@
-Contao BackendMultiEditAssistent Extension
+Contao BackendMultiEditAssistant Extension
 ==========================================
 
-Provides an assistent to improove filling the fields in multi edit mode.
+Provides an assistant to improove filling the fields in multi edit mode.
 
 **!!! PROOF OF CONCEPT !!!**
 
@@ -16,7 +16,7 @@ Install it manually.
 Tracker
 -------
 
-https://github.com/cliffparnitzky/BackendMultiEditAssistent/issues
+https://github.com/cliffparnitzky/BackendMultiEditAssistant/issues
 
 
 Compatibility

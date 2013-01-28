@@ -1,0 +1,22 @@
+.tl_assistant:before {
+    color: #FFFFFF;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.tl_assistant {
+    background: url("move.png") no-repeat scroll right top #B3B6B3;
+    border: 0 none;
+    border-radius: 10px 10px 10px 10px;
+    float: left;
+    min-width: 90px;
+    padding: 5px;
+}
+.tl_assistant {
+    border: 0 none;
+    cursor: move;
+    position: fixed;
+    right: 150px;
+    top: 200px;
+}

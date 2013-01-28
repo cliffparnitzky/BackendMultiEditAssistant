@@ -23,14 +23,14 @@
  * PHP version 5
  * @copyright  Cliff Parnitzky 2012
  * @author     Cliff Parnitzky
- * @package    BackendMultiEditAssistent
+ * @package    BackendMultiEditAssistant
  * @license    LGPL
  */
 
 if(TL_MODE == 'BE' && $_GET['act'] == 'editAll' && $_GET['fields'] != null)
 {
-	$GLOBALS['TL_HOOKS']['loadLanguageFile']['BackendMultiEditAssistentHook'] = array('BackendMultiEditAssistent', 'addStaticConfiguration');
-	$GLOBALS['TL_HOOKS']['outputBackendTemplate'][] = array('BackendMultiEditAssistent', 'addTranslatedConfiguration');
+	$GLOBALS['TL_HOOKS']['loadLanguageFile']['BackendMultiEditAssistantHook'] = array('BackendMultiEditAssistant', 'addStaticConfiguration');
+	$GLOBALS['TL_HOOKS']['outputBackendTemplate'][] = array('BackendMultiEditAssistant', 'addTranslatedConfiguration');
 }
  
 ?>

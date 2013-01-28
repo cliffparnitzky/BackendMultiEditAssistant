@@ -23,13 +23,13 @@
  * PHP version 5
  * @copyright  Cliff Parnitzky 2012
  * @author     Cliff Parnitzky
- * @package    BackendMultiEditAssistent
+ * @package    BackendMultiEditAssistant
  * @license    LGPL
  */
 
 /**
- * defaults
+ * Define name and tooltip for preferences (inactive modules)
  */
-$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistentBtnDo'] = 'Tue es';
+$GLOBALS['TL_LANG']['MOD']['BackendMultiEditAssistant'] = array('Backend multi edit assistant', 'Provides an assistant to improove filling the fields in multi edit mode.');
 
 ?>

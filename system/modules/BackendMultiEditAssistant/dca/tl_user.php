@@ -23,7 +23,7 @@
 * PHP version 5
 * @copyright  Cliff Parnitzky 2012
 * @author     Cliff Parnitzky
-* @package    BackendMultiEditAssistent
+* @package    BackendMultiEditAssistant
 * @license    LGPL
 */
 
@@ -41,14 +41,14 @@ foreach ($GLOBALS['TL_DCA']['tl_user']['palettes'] as $key => $row) {
 		$backendExtendedPalletFound = false;
 		foreach ($arrPalettes as $index => $pallet) {
 			if (strpos($pallet, "backend-extended_legend") !== false) {
-				$arrPalettes[$index] = $pallet . ",useBackendMultiEditAssistent";
+				$arrPalettes[$index] = $pallet . ",useBackendMultiEditAssistant";
 				$backendExtendedPalletFound = true;
 			} else if (strpos($pallet, "backend_legend") !== false) {
 				$backendPalletIndex = $index;
 			}
 		}
 		if (!$backendExtendedPalletFound) {
-			array_insert($arrPalettes, $backendPalletIndex + 1, '{backend-extended_legend},useBackendMultiEditAssistent', false);
+			array_insert($arrPalettes, $backendPalletIndex + 1, '{backend-extended_legend},useBackendMultiEditAssistant', false);
 		}
 		
 		$GLOBALS['TL_DCA']['tl_user']['palettes'][$key] = implode(";", $arrPalettes);
@@ -57,9 +57,9 @@ foreach ($GLOBALS['TL_DCA']['tl_user']['palettes'] as $key => $row) {
 /**
 * Add field
 */
-$GLOBALS['TL_DCA']['tl_user']['fields']['useBackendMultiEditAssistent'] = array
+$GLOBALS['TL_DCA']['tl_user']['fields']['useBackendMultiEditAssistant'] = array
 (
-	'label'     => &$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistent'],
+	'label'     => &$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistant'],
 	'inputType' => 'checkbox',
 	'eval'      => array('tl_class'=>'w50')
 );

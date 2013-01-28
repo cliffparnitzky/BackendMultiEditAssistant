@@ -23,13 +23,13 @@
  * PHP version 5
  * @copyright  Cliff Parnitzky 2012
  * @author     Cliff Parnitzky
- * @package    BackendMultiEditAssistent
+ * @package    BackendMultiEditAssistant
  * @license    LGPL
  */
 
 /**
  * defaults
  */
-$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistentBtnDo'] = 'Do it';
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle'] = 'Assistant';
 
 ?>

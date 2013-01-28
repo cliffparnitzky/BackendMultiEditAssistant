@@ -23,14 +23,14 @@
  * PHP version 5
  * @copyright  Cliff Parnitzky 2012
  * @author     Cliff Parnitzky
- * @package    BackendMultiEditAssistent
+ * @package    BackendMultiEditAssistant
  * @license    LGPL
  */
 
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistent'] = array('Mehrfachbearbeiten Assistent verwenden', 'Geben Sie an, ob Sie den Mehrfachbearbeiten Assistent im Backend verwenden wollen.');
+$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistant'] = array('Mehrfachbearbeiten Assistent verwenden', 'Geben Sie an, ob Sie den Mehrfachbearbeiten Assistent im Backend verwenden wollen.');
 
 /**
  * Legends
