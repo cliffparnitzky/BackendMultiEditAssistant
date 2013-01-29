@@ -30,3 +30,9 @@ Dependency
 ----------
 
 - There are no dependencies to other extensions, that have to be installed.
+
+
+Screenshot
+----------
+
+![Screenshot](https://raw.github.com/cliffparnitzky/BackendMultiEditAssistant/master/screenshot.jpg)
