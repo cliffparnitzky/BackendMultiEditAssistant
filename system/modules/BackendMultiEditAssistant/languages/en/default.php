@@ -30,6 +30,7 @@
 /**
  * defaults
  */
-$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle'] = 'Assistant';
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle']            = 'Assistant';
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll'] = 'Apply to all';
 
 ?>

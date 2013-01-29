@@ -1,25 +1,2 @@
-window.addEvent('domready', function() {
-	var assistant = new Element('div', {
-		'class': 'tl_assistant'
-	}).inject($('main'));
-
-	var assistantContainer = new Element('div', {
-		'class': 'tl_assistant_container'
-	}).inject(assistant);
-	
-	var dataset = $('main').getElements('.tl_box');
-	if (dataset.length > 0) {
-		var fields = dataset[0].getElements('[id^=ctrl_]');
-		
-		Array.each(fields, function(element){
-			var clone = element.clone().cloneEvents(element); 
-			clone.inject(assistantContainer);
-		});
-	}
-
-	new Drag(assistant, {
-		onStart: function(el) {
-			el.set('styles', {right: 'auto'});
-		}
-	});
-});
+window.addEvent('domready',function(){var assistant=new Element('div',{'class':'tl_assistant','id':'multiEditAssistant'}).inject($('main'));var assistantContainer=new Element('div',{'class':'tl_assistant_container'}).inject(assistant);var firstElement=null;var elements=$('main').getElements('.tl_form')[0].getElements('.tl_tbox');if(elements.length>0){Array.each(elements,function(element){if(firstElement==null){firstElement=element;}});}
+var clone=firstElement.clone(true,true).cloneEvents(firstElement);clone.inject(assistantContainer);var fields=clone.getElements('[id^=ctrl_]');Array.each(fields,function(field){field.id=field.id.substring(0,field.id.lastIndexOf("_"));field.addEvent("click",function(){field.focus();});});fields=clone.getElements('[id^=opt_]');Array.each(fields,function(field){field.id=field.id.substring(0,field.id.lastIndexOf("_"));field.id=field.id.substring(0,field.id.lastIndexOf("_"));});fields=clone.getElements('[id^=check_all_]');Array.each(fields,function(field){field.id=field.id.substring(0,field.id.lastIndexOf("_"));var id="ctrl"+field.id.substring(field.id.lastIndexOf("_"),field.id.lenth);field.onclick=function(){Backend.toggleCheckboxGroup(this,id);};});new Drag.Move(assistant);assistant.style.top=(firstElement.offsetTop-clone.offsetTop)+"px";assistant.style.left=(firstElement.getElements('[id^=ctrl_]')[0].offsetLeft+firstElement.getElements('[id^=ctrl_]')[0].offsetWidth+5)+"px";var assistant=new Element('input',{'type':'submit','value':backendMultiEditAssistantButtonApplyToAll,'onclick':'backendMultiEditAssistantApplyToAll()'}).inject(assistantContainer);});function backendMultiEditAssistantApplyToAll(){var assitantFields=$('multiEditAssistant').getElements('[id^=ctrl_]');Array.each(assitantFields,function(assitantField){var fields=$('main').getElements('.tl_form')[0].getElements('[id^='+assitantField.id+']');Array.each(fields,function(field){field.value=assitantField.value;});});assitantFields=$('multiEditAssistant').getElements('[id^=opt_]');Array.each(assitantFields,function(assitantField){var fields=$('main').getElements('.tl_form')[0].getElements('[id^='+assitantField.id+']');Array.each(fields,function(field){if(field.value==assitantField.value){field.checked=assitantField.checked;}});});}

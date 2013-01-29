@@ -1,30 +1,57 @@
-/*.tl_formbody_submit {
-	border: 0px;
-	position: fixed;
-	right: 10px;
-	top: 200px;
-	cursor: move;
+/**
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2013 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, please visit the Free
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
+ *
+ * PHP version 5
+ * @copyright  Cliff Parnitzky 2012-2013
+ * @author     Cliff Parnitzky
+ * @package    BackendMultiEditAssistant
+ * @license    LGPL
+ */
+ 
+.tl_assistant {
+    border: 0 none;
+    cursor: move;
+    background-color: #ffffff
+}
+.tl_assistant_container:before {
+    color: #666966;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.tl_assistant_container {
+    background: url("move.png") no-repeat scroll right top #ffffff;
+    outline: 3px solid #b3b6b3;
+    min-width: 90px;
+    padding: 5px;
+    width: 300px;
+}
+.tl_assistant_container .tl_tbox {
+	clear: both;
 }
 
-.tl_submit_container:before {
-	float: left;
-	margin-bottom: 5px;
-	font-size: 12px;
-	font-weight: bold;
-	color: #ffffff;
+.tl_assistant_container .tl_tbox .tl_text{
+	width: 98%;
 }
 
-.tl_submit_container {
-	background: url("move.png") top right no-repeat #B3B6B3;
-	float: left;
-	border: 0px;
-	padding: 5px;
-	border-radius: 10px 10px 10px 10px;
-	min-width: 90px;
-}
-
-.tl_submit_container input, .tl_submit_container button {
+.tl_assistant_container .tl_tbox .tl_select,
+.tl_assistant_container .tl_tbox .tl_mselect{
 	width: 100%;
-	float: left;
-	clear: left;
-}*/
+}

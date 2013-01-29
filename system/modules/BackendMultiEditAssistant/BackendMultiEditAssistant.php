@@ -63,7 +63,7 @@ class BackendMultiEditAssistant extends Backend {
 	public function addTranslatedConfiguration($strContent, $strTemplate) {
 		if ($strTemplate == 'be_main' && $this->User->useBackendMultiEditAssistant) {
 			$strContent = preg_replace('/<\/head>/', "<style type=\"text/css\">.tl_assistant_container:before {content: \"" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle'] . "\";}</style>\n$0", $strContent, 1);
-			return preg_replace('/<\/body>/', "<script type=\"text/javascript\"> /* maybe we need some translated javascript or mootools initializing here */ </script>\n$0", $strContent, 1);
+			return preg_replace('/<\/body>/', "<script type=\"text/javascript\">var backendMultiEditAssistantButtonApplyToAll = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll'] . "';</script>\n$0", $strContent, 1);
 		}
 		return $strContent;
 	}
