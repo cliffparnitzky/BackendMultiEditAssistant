@@ -1,5 +1,5 @@
-Contao BackendMultiEditAssistant Extension
-==========================================
+Contao Extension: BackendMultiEditAssistant
+===========================================
 
 Provides an assistant to improove filling the fields in multi edit mode.
 
@@ -21,7 +21,7 @@ Compatibility
 -------------
 
 - min. version: Contao 2.9.5
-- max. version: Contao 3.0.3
+- max. version: Contao 3.0.x
 
 
 Dependency
