@@ -12,5 +12,6 @@
 -- 
 
 CREATE TABLE `tl_user` (
-  `useBackendMultiEditAssistant` char(1) NOT NULL default ''
+  `backendMultiEditAssistantActive` char(1) NOT NULL default '',
+  `backendMultiEditAssistantTableLayoutAlwaysActive` char(1) NOT NULL default ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

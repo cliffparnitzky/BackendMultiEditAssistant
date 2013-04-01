@@ -34,3 +34,4 @@ Screenshot
 ----------
 
 ![Screenshot](https://raw.github.com/cliffparnitzky/BackendMultiEditAssistant/master/screenshot.jpg)
+![Tablelayout](https://raw.github.com/cliffparnitzky/BackendMultiEditAssistant/master/tablelayout.jpg)

@@ -30,7 +30,10 @@
 /**
  * defaults
  */
-$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle']            = 'Assistent';
-$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll'] = 'Für alle übernehmen';
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle']                = 'Assistent';
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll']     = 'Für alle übernehmen';
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOn']  = 'Tabellenlayout | An';
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff'] = 'Tabellenlayout | Aus';
+
 
 ?>

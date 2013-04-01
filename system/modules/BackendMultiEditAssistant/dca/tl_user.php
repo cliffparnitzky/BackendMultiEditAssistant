@@ -30,36 +30,52 @@
 /**
 * Extending paletts
 */
-foreach ($GLOBALS['TL_DCA']['tl_user']['palettes'] as $key => $row) {
-		if ($key == '__selector__') {    
-				continue;
+foreach ($GLOBALS['TL_DCA']['tl_user']['palettes'] as $key => $row)
+{
+		if ($key == '__selector__')
+		{    
+			$GLOBALS['TL_DCA']['tl_user']['palettes'][$key][] = 'backendMultiEditAssistantActive';
+			continue;
 		}
 
 		$arrPalettes = explode(";", $row);
 		
 		$backendPalletIndex = 0;
 		$backendExtendedPalletFound = false;
-		foreach ($arrPalettes as $index => $pallet) {
-			if (strpos($pallet, "backend-extended_legend") !== false) {
-				$arrPalettes[$index] = $pallet . ",useBackendMultiEditAssistant";
+		foreach ($arrPalettes as $index => $pallet)
+		{
+			if (strpos($pallet, "backend-extended_legend") !== false)
+			{
+				$arrPalettes[$index] = $pallet . ",backendMultiEditAssistantActive";
 				$backendExtendedPalletFound = true;
-			} else if (strpos($pallet, "backend_legend") !== false) {
+			}
+			else if (strpos($pallet, "backend_legend") !== false)
+			{
 				$backendPalletIndex = $index;
 			}
 		}
-		if (!$backendExtendedPalletFound) {
-			array_insert($arrPalettes, $backendPalletIndex + 1, '{backend-extended_legend},useBackendMultiEditAssistant', false);
+		if (!$backendExtendedPalletFound)
+		{
+			array_insert($arrPalettes, $backendPalletIndex + 1, '{backend-extended_legend},backendMultiEditAssistantActive', false);
 		}
 		
 		$GLOBALS['TL_DCA']['tl_user']['palettes'][$key] = implode(";", $arrPalettes);
 }
 
+$GLOBALS['TL_DCA']['tl_user']['subpalettes']['backendMultiEditAssistantActive'] = 'backendMultiEditAssistantTableLayoutAlwaysActive';
+
 /**
 * Add field
 */
-$GLOBALS['TL_DCA']['tl_user']['fields']['useBackendMultiEditAssistant'] = array
+$GLOBALS['TL_DCA']['tl_user']['fields']['backendMultiEditAssistantActive'] = array
 (
-	'label'     => &$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistant'],
+	'label'     => &$GLOBALS['TL_LANG']['tl_user']['backendMultiEditAssistantActive'],
+	'inputType' => 'checkbox',
+	'eval'      => array('submitOnChange'=>true, 'tl_class'=>'clr w50')
+);
+$GLOBALS['TL_DCA']['tl_user']['fields']['backendMultiEditAssistantTableLayoutAlwaysActive'] = array
+(
+	'label'     => &$GLOBALS['TL_LANG']['tl_user']['backendMultiEditAssistantTableLayoutAlwaysActive'],
 	'inputType' => 'checkbox',
 	'eval'      => array('tl_class'=>'w50')
 );

@@ -18,7 +18,6 @@
  * License along with this program. If not, please visit the Free
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
- * PHP version 5
  * @copyright  Cliff Parnitzky 2012-2013
  * @author     Cliff Parnitzky
  * @package    BackendMultiEditAssistant
@@ -74,14 +73,26 @@ window.addEvent('domready', function() {
 
 	new Drag.Move(assistant);
 	assistant.style.top = (firstElement.offsetTop - clone.offsetTop) + "px";
-	assistant.style.left = (firstElement.getElements('[id^=ctrl_]')[0].offsetLeft + firstElement.getElements('[id^=ctrl_]')[0].offsetWidth + 5) + "px";
 	
-	var assistant = new Element('input', {
+	new Element('input', {
 		'type': 'submit',
 		'value': backendMultiEditAssistantButtonApplyToAll,
 		'onclick': 'backendMultiEditAssistantApplyToAll()'
 	}).inject(assistantContainer);
 	
+	new Element('input', {
+		'id': 'buttonTableLayout',
+		'type': 'submit',
+		'value': backendMultiEditAssistantButtonTableLayoutOn ,
+		'onclick': 'backendMultiEditAssistantSwitchTableLayout()'
+	}).inject(assistantContainer);
+	
+	if (isTablelayoutActive()) {
+		setTablelayoutBoxWidth();
+		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOff;
+	} else {
+		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOn;
+	}
 });
 
 function backendMultiEditAssistantApplyToAll () {
@@ -104,4 +115,45 @@ function backendMultiEditAssistantApplyToAll () {
 			}
 		});
 	});
+}
+
+function backendMultiEditAssistantSwitchTableLayout () {
+	if (isTablelayoutActive()) {
+		sheet = document.getElementById("tablelayout")
+		sheet.parentNode.removeChild(sheet);
+		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOn;
+	} else {
+		Asset.css("system/modules/BackendMultiEditAssistant/html/tablelayout.css", {
+			id: "tablelayout",
+			onLoad: function() {
+				setTablelayoutBoxWidth();
+			}
+		});
+		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOff;
+	}
+}
+
+function isTablelayoutActive () {
+	var styleSheets = document.getElementsByTagName("link");
+	for (var i = 0; i < styleSheets.length; i++) {
+		if (styleSheets[i] != null && styleSheets[i].href != null && styleSheets[i].href.search("tablelayout.css") > -1) {
+			styleSheets[i].setAttribute("id", "tablelayout");
+			return true;
+		}
+	}
+	return false;
+}
+
+function setTablelayoutBoxWidth () {
+	var fieldCount =  $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getElements('div').length;
+	var fieldWidth = $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getElements('div')[0].getStyle('width').toInt();
+	var boxWidth = fieldCount * fieldWidth;
+	
+	$('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].setStyle('width', boxWidth);
+	fields = $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_box');
+	Array.each(fields, function(field){
+		field.setStyle('width', boxWidth + "px")
+	});
+	
+	// TODO: here some fields have to be removed ... e.g. fileTree
 }

@@ -30,7 +30,8 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_user']['useBackendMultiEditAssistant'] = array('Use multi edit assistant', 'Select if you want to use the multi edit assistant in the backend.');
+$GLOBALS['TL_LANG']['tl_user']['backendMultiEditAssistantActive']                  = array('Use multi edit assistant', 'Select if you want to use the multi edit assistant in the backend.');
+$GLOBALS['TL_LANG']['tl_user']['backendMultiEditAssistantTableLayoutAlwaysActive'] = array('Table layout always active', 'Select if you always want to use the table layout in multi edit mode in the backend.');
 
 /**
  * Legends

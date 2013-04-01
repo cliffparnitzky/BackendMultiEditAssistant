@@ -34,7 +34,8 @@
 * @copyright  Cliff Parnitzky 2012
 * @author     Cliff Parnitzky
 */
-class BackendMultiEditAssistant extends Backend {
+class BackendMultiEditAssistant extends Backend
+{
 	/**
 	 * Initialize the object, import the user class file
 	 */
@@ -47,10 +48,17 @@ class BackendMultiEditAssistant extends Backend {
 	/**
 	* Adds translated css and javascript for the footer
 	*/
-	public function addStaticConfiguration($strName, $strLanguage) {
-		if ($this->User->useBackendMultiEditAssistant) {
+	public function addStaticConfiguration($strName, $strLanguage)
+	{
+		if ($this->User->backendMultiEditAssistantActive)
+		{
 			$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/html/assistant.css';
 			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/BackendMultiEditAssistant/html/assistant.js';
+			
+			if ($this->User->backendMultiEditAssistantTableLayoutAlwaysActive)
+			{
+				$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/html/tablelayout.css';
+			}
 			
 			// make sure the hook is only executed once
 			unset($GLOBALS['TL_HOOKS']['loadLanguageFile']['BackendMultiEditAssistantHook']);
@@ -60,10 +68,12 @@ class BackendMultiEditAssistant extends Backend {
 	/**
 	* Adds translated css and javascript for the footer
 	*/
-	public function addTranslatedConfiguration($strContent, $strTemplate) {
-		if ($strTemplate == 'be_main' && $this->User->useBackendMultiEditAssistant) {
+	public function addTranslatedConfiguration($strContent, $strTemplate)
+	{
+		if ($strTemplate == 'be_main' && $this->User->backendMultiEditAssistantActive)
+		{
 			$strContent = preg_replace('/<\/head>/', "<style type=\"text/css\">.tl_assistant_container:before {content: \"" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle'] . "\";}</style>\n$0", $strContent, 1);
-			return preg_replace('/<\/body>/', "<script type=\"text/javascript\">var backendMultiEditAssistantButtonApplyToAll = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll'] . "';</script>\n$0", $strContent, 1);
+			return preg_replace('/<\/body>/', "<script type=\"text/javascript\">var backendMultiEditAssistantButtonApplyToAll = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll'] . "';var backendMultiEditAssistantButtonTableLayoutOn = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOn'] . "';var backendMultiEditAssistantButtonTableLayoutOff = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff'] . "';</script>\n$0", $strContent, 1);
 		}
 		return $strContent;
 	}
