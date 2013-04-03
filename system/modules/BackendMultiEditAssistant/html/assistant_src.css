@@ -29,7 +29,7 @@
 	cursor: move;
 	background-color: #ffffff;
 	left: 10px;
-	position: absolute;
+	position: fixed;
 }
 .tl_assistant_container:before {
 	color: #666966;
