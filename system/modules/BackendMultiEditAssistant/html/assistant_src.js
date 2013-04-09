@@ -93,6 +93,33 @@ window.addEvent('domready', function() {
 	} else {
 		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOn;
 	}
+	
+	// adding message displayer
+	$$('#multiEditAssistant p.tl_tip').each(function(el)
+	{
+		el.addEvent('mouseover', function()
+		{
+			el.timo = setTimeout(function()
+			{
+				var box = $('tl_helpBox');
+				if (box)
+				{
+					box.setStyle('left', (el.getLeft()) + 'px');
+					box.setStyle('margin-left', 0);
+				}
+			}, 1050);
+		});
+		el.addEvent('mouseout', function()
+		{
+			var box = $('tl_helpBox');
+			if (box)
+			{
+				box.setStyle('left', null);
+				box.setStyle('margin-left', null);
+			}
+		});
+	});
+	Backend.addInteractiveHelp();
 });
 
 function backendMultiEditAssistantApplyToAll () {
