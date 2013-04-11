@@ -21,7 +21,7 @@
 * Software Foundation website at <http://www.gnu.org/licenses/>.
 *
 * PHP version 5
-* @copyright  Cliff Parnitzky 2012
+* @copyright  Cliff Parnitzky 2012-2013
 * @author     Cliff Parnitzky
 * @package    BackendMultiEditAssistant
 * @license    LGPL

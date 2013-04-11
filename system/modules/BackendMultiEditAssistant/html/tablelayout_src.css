@@ -40,9 +40,17 @@
 
 /* float all field inside a block */
 .tl_formbody_edit .tl_tbox > div,
-.tl_formbody_edit .tl_box > div {
+.tl_formbody_edit .tl_box > div,
+.tl_formbody_edit .tl_tbox div[id*='sub_'] > div,
+.tl_formbody_edit .tl_box div[id*='sub_'] > div {
 	float: left;
+	overflow: hidden;
 	width: 130px;
+}
+
+.tl_formbody_edit .tl_tbox div[id*='sub_'],
+.tl_formbody_edit .tl_box div[id*='sub_'] {
+	width: auto;
 }
 
 .tl_formbody_edit .tl_tbox:hover,
@@ -57,17 +65,61 @@
 	display: none;
 }
 
-.tl_formbody_edit .tl_text,
+.tl_formbody_edit .tl_tbox > div h3 {
+	overflow: hidden;
+	width: 95%;
+}
+
 .tl_formbody_edit .tl_text {
 	width: 91%;
 }
 
-.tl_formbody_edit .tl_select,
+.tl_formbody_edit .tl_text_2 {
+	width: 42%;
+}
+
 .tl_formbody_edit .tl_select {
-	width: 95%;
+	width: 94%;
+}
+
+.tl_formbody_edit .tl_textarea {
+	width: 91%;
 }
 
 .tl_formbody_edit  input.calendar,
 .tl_formbody_edit  select.calendar {
-    width: 77%;
+	width: 77%;
+}
+
+.tl_formbody_edit .tl_tbox div.tl_checkbox_single_container {
+	margin-top: 33px;
+	overflow: hidden;
+	width: 95%;
+}
+
+.tl_formbody_edit .tl_box div.tl_checkbox_single_container {
+	margin-top: 4px;
+	overflow: hidden;
+	width: 95%;
+}
+
+.tl_formbody_edit  div.tl_checkbox_container, .tl_formbody_edit  div.tl_radio_container {
+	height: 40px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 96%;
+}
+
+.tl_formbody_edit .tl_tbox h3 label {
+    display: inline-block;
+    overflow: hidden;
+    width: 105px;
+}
+
+.tl_formbody_edit label {
+	cursor: help;
+}
+
+.w50 {
+	width: 48%;
 }

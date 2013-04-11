@@ -21,19 +21,23 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Cliff Parnitzky 2012
+ * @copyright  Cliff Parnitzky 2012-2013
  * @author     Cliff Parnitzky
  * @package    BackendMultiEditAssistant
  * @license    LGPL
  */
 
 /**
- * defaults
+ * Buttons / labels
  */
 $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle']                = 'Assistent';
 $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll']     = 'Für alle übernehmen';
 $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOn']  = 'Tabellenlayout | An';
 $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff'] = 'Tabellenlayout | Aus';
 
+/**
+ * Messages
+ */
+$GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutMessageHidedElements'] = 'ACHTUNG: Einige Elemente werden nicht angezeigt, weil die Darstellung in der Tabelle nicht möglich ist!';
 
 ?>

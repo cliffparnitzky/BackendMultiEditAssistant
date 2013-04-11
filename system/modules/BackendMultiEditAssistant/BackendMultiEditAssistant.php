@@ -21,7 +21,7 @@
 * Software Foundation website at <http://www.gnu.org/licenses/>.
 *
 * PHP version 5
-* @copyright  Cliff Parnitzky 2012
+* @copyright  Cliff Parnitzky 2012-2013
 * @author     Cliff Parnitzky
 * @package    BackendMultiEditAssistant
 * @license    LGPL
@@ -31,7 +31,7 @@
 * Class BackendMultiEditAssistant
 *
 * Adds misc functions and initializes the assistant.
-* @copyright  Cliff Parnitzky 2012
+* @copyright  Cliff Parnitzky 2012-2013
 * @author     Cliff Parnitzky
 */
 class BackendMultiEditAssistant extends Backend
@@ -73,7 +73,11 @@ class BackendMultiEditAssistant extends Backend
 		if ($strTemplate == 'be_main' && $this->User->backendMultiEditAssistantActive)
 		{
 			$strContent = preg_replace('/<\/head>/', "<style type=\"text/css\">.tl_assistant_container:before {content: \"" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantTitle'] . "\";}</style>\n$0", $strContent, 1);
-			return preg_replace('/<\/body>/', "<script type=\"text/javascript\">var backendMultiEditAssistantButtonApplyToAll = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll'] . "';var backendMultiEditAssistantButtonTableLayoutOn = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOn'] . "';var backendMultiEditAssistantButtonTableLayoutOff = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff'] . "';</script>\n$0", $strContent, 1);
+			return preg_replace('/<\/body>/', "<script type=\"text/javascript\">var backendMultiEditAssistantButtonApplyToAll = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonApplyToAll']
+																																		 . "';var backendMultiEditAssistantButtonTableLayoutOn = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOn']
+																																		 . "';var backendMultiEditAssistantButtonTableLayoutOff = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff']
+																																		 . "';var backendMultiEditAssistantButtonTableLayoutMessageHidedElements = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutMessageHidedElements']
+ 																		 . "';</script>\n$0", $strContent, 1);
 		}
 		return $strContent;
 	}

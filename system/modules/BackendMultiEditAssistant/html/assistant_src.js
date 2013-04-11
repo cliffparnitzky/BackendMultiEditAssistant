@@ -89,12 +89,14 @@ window.addEvent('domready', function() {
 	
 	if (isTablelayoutActive()) {
 		setTablelayoutBoxWidth();
+		setTablelayoutTooltips();
+		hideTablelayoutIncompatibleFields();
 		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOff;
 	} else {
 		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOn;
 	}
 	
-	// adding message displayer
+	// adding interactive help to assistent
 	$$('#multiEditAssistant p.tl_tip').each(function(el)
 	{
 		el.addEvent('mouseover', function()
@@ -148,12 +150,17 @@ function backendMultiEditAssistantSwitchTableLayout () {
 	if (isTablelayoutActive()) {
 		sheet = document.getElementById("tablelayout")
 		sheet.parentNode.removeChild(sheet);
+		removeTablelayoutBoxWidth();
+		removeTablelayoutTooltips();
+		showTablelayoutIncompatibleFields();
 		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOn;
 	} else {
 		Asset.css("system/modules/BackendMultiEditAssistant/html/tablelayout.css", {
 			id: "tablelayout",
 			onLoad: function() {
 				setTablelayoutBoxWidth();
+				setTablelayoutTooltips();
+				hideTablelayoutIncompatibleFields();
 			}
 		});
 		$("buttonTableLayout").value = backendMultiEditAssistantButtonTableLayoutOff;
@@ -172,15 +179,138 @@ function isTablelayoutActive () {
 }
 
 function setTablelayoutBoxWidth () {
-	var fieldCount =  $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getElements('div').length;
-	var fieldWidth = $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getElements('div')[0].getStyle('width').toInt();
+	var fieldCount =  $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getChildren('div').length;
+	var fieldCountHidden = 0;
+	$('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getChildren("div").each(function(el) {
+		if (el.getStyle('display') == 'none') {
+			fieldCountHidden++;
+		}
+	});
+	var fieldCountSub =  $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getChildren("div[id*='sub_']").length;
+	var fieldCountSubDiv = 0;
+	$('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getChildren("div[id*='sub_']").each(function(el) {
+		fieldCountSubDiv += el.getChildren('div').length;
+	});
+	
+	fieldCount = fieldCount - fieldCountHidden - fieldCountSub + fieldCountSubDiv;
+	
+	var fieldWidth = $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].getChildren('div')[0].getStyle('width').toInt();
 	var boxWidth = fieldCount * fieldWidth;
 	
 	$('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].setStyle('width', boxWidth);
 	fields = $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_box');
 	Array.each(fields, function(field){
-		field.setStyle('width', boxWidth + "px")
+		field.setStyle('width', boxWidth)
 	});
-	
-	// TODO: here some fields have to be removed ... e.g. fileTree
+}
+
+function removeTablelayoutBoxWidth () {
+	$('main').getElements('.tl_formbody_edit')[0].getElements('.tl_tbox')[0].setStyle('width', null);
+	fields = $('main').getElements('.tl_formbody_edit')[0].getElements('.tl_box');
+	Array.each(fields, function(field){
+		field.setStyle('width', null)
+	});
+}
+
+function setTablelayoutTooltips () {
+	// adding tooltips to label
+	$$('.tl_formbody_edit label').each(function(el)
+	{
+		if (el.retrieve('complete'))
+		{
+			return;
+		}
+
+		el.addEvent('mouseover', function()
+		{
+			el.timo = setTimeout(function()
+			{
+				var box = $('tl_helpBox');
+
+				if (!box)
+				{
+					box = new Element('div').setProperty('id', 'tl_helpBox').injectInside($(document.body));
+				}
+
+				var scroll = el.getTop();
+
+				box.set('html', el.get('html'));
+				box.setStyle('display', 'block');
+				box.setStyle('top', (scroll + 18) + 'px');
+				box.setStyle('left', (el.getLeft()) + 'px');
+				box.setStyle('margin-left', 0);
+				box.setStyle('width', 130);
+			}, 1000);
+		});
+
+		el.addEvent('mouseout', function()
+		{
+			var box = $('tl_helpBox');
+
+			if (box)
+			{
+				box.setStyle('display', 'none');
+				box.setStyle('width', null);
+			}
+
+			clearTimeout(el.timo);
+		});
+
+		el.store('complete', true);
+	});
+}
+
+function removeTablelayoutTooltips () {
+	// adding tooltips to label
+	$$('.tl_formbody_edit label').each(function(el)
+	{
+		el.removeEvents('mouseover');
+		el.removeEvents('mouseout');
+		
+		el.store('complete', false);
+	});
+}
+
+function hideTablelayoutIncompatibleFields () {
+	// remove some fields that could not be displayed correct in a table
+	var timo = setTimeout(function() {
+		var hidedElements = 0;
+		$$('.tl_formbody_edit .tl_modulewizard').each(function(el) {
+			el.getParent().setStyle('display', 'none');
+			hidedElements++;
+		}); 
+		$$('.tl_formbody_edit .mceEditor').each(function(el) {
+			el.getParent().setStyle('display', 'none');
+			hidedElements++;
+		}); 
+		$$('.tl_formbody_edit .tree_view').each(function(el) {
+			el.getParent().setStyle('display', 'none');
+			hidedElements++;
+		}); 
+		$$(".tl_formbody_edit div[id*='_sub_']").each(function(el) {
+			el.setStyle('display', 'none');
+			hidedElements++;
+		});
+		if (hidedElements > 0) {
+			alert(backendMultiEditAssistantButtonTableLayoutMessageHidedElements);
+			setTablelayoutBoxWidth();
+		}
+	}, 1000);
+}
+
+function showTablelayoutIncompatibleFields () {
+	$$('.tl_formbody_edit .tl_modulewizard').each(function(el) {
+		el.getParent().setStyle('display', null);
+	});
+	$$('.tl_formbody_edit .mceEditor').each(function(el) {
+		el.getParent().setStyle('display', null);
+	});
+	$$('.tl_formbody_edit .tree_view').each(function(el) {
+		el.getParent().setStyle('display', null);
+		hidedElements++;
+	}); 
+	$$(".tl_formbody_edit div[id*='_sub_']").each(function(el) {
+		el.setStyle('display', null);
+		hidedElements++;
+	});
 }
