@@ -27,6 +27,7 @@
 * @license    LGPL
 */
 
+$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/html/w50_fix.css'; 
 /**
 * Extending paletts
 */

@@ -36,6 +36,8 @@
 	border: 0 none;
 	padding: 0;
 	white-space: nowrap;
+	float: left;
+	clear: left;
 }
 
 /* float all field inside a block */
@@ -65,11 +67,6 @@
 	display: none;
 }
 
-.tl_formbody_edit .tl_tbox > div h3 {
-	overflow: hidden;
-	width: 95%;
-}
-
 .tl_formbody_edit .tl_text {
 	width: 91%;
 }
@@ -80,6 +77,10 @@
 
 .tl_formbody_edit .tl_select {
 	width: 94%;
+}
+
+.tl_formbody_edit .styled_select {
+	width: 120px;
 }
 
 .tl_formbody_edit .tl_textarea {
@@ -110,10 +111,19 @@
 	width: 96%;
 }
 
+.tl_formbody_edit .tl_tbox > div h3 {
+	overflow: hidden;
+	width: 100%;
+}
+
 .tl_formbody_edit .tl_tbox h3 label {
     display: inline-block;
     overflow: hidden;
     width: 105px;
+}
+
+.tl_formbody_edit .tl_tbox:hover h3 {
+	background-color: #ffffff;
 }
 
 .tl_formbody_edit label {

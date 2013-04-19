@@ -39,7 +39,7 @@
 }
 .tl_assistant_container {
 	background: url("move.png") no-repeat scroll right top #ffffff;
-	outline: 3px solid #b3b6b3;
+	border: 3px solid #b3b6b3;
 	min-width: 90px;
 	padding: 5px;
 	width: 300px;
@@ -55,4 +55,8 @@
 .tl_assistant_container .tl_tbox .tl_select,
 .tl_assistant_container .tl_tbox .tl_mselect{
 	width: 100%;
+}
+
+.tl_assistant_container .tl_tbox .styled_select {
+    width: 95%;
 }
