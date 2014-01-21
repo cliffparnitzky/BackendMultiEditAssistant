@@ -1,6 +1,6 @@
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2013 Leo Feyer
+ * Copyright (C) 2005-2014 Leo Feyer
  *
  * Formerly known as TYPOlight Open Source CMS.
  *
@@ -18,7 +18,7 @@
  * License along with this program. If not, please visit the Free
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
- * @copyright  Cliff Parnitzky 2012-2013
+ * @copyright  Cliff Parnitzky 2012-2014
  * @author     Cliff Parnitzky
  * @package    BackendMultiEditAssistant
  * @license    LGPL
