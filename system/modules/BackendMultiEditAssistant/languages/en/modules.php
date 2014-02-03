@@ -30,6 +30,6 @@
 /**
  * Define name and tooltip for preferences (inactive modules)
  */
-$GLOBALS['TL_LANG']['MOD']['BackendMultiEditAssistant'] = array('Backend multi edit assistant', 'Provides an assistant to improove filling the fields in multi edit mode.');
+$GLOBALS['TL_LANG']['MOD']['BackendMultiEditAssistant'] = array('Backend multi edit assistant', 'Provides an assistant to improve filling in the fields in multi edit mode.');
 
 ?>
