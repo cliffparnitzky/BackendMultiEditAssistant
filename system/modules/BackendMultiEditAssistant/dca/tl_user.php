@@ -76,7 +76,7 @@ $GLOBALS['TL_DCA']['tl_user']['fields']['backendMultiEditAssistantActive'] = arr
 (
 	'label'     => &$GLOBALS['TL_LANG']['tl_user']['backendMultiEditAssistantActive'],
 	'inputType' => 'checkbox',
-	'eval'      => array('submitOnChange'=>true, 'tl_class'=>'clr w50')
+	'eval'      => array('tl_class'=>'clr w50')
 );
 $GLOBALS['TL_DCA']['tl_user']['fields']['backendMultiEditAssistantTableLayoutAlwaysActive'] = array
 (
