@@ -48,14 +48,21 @@ window.addEvent('domready', function() {
 	var clone = firstElement.clone(true, true).cloneEvents(firstElement);
 	clone.inject(assistantContainer);
 	
+	// remove choosen options
+	var fields = clone.getElements('div.tl_chosen');
+	Array.each(fields, function(field){
+		field.destroy();
+	});
+	
 	// reset ids starting with "ctrl_"
-	var fields = clone.getElements('[id^=ctrl_]');
+	fields = clone.getElements('[id^=ctrl_]');
 	Array.each(fields, function(field){
 		field.id = field.id.substring(0, field.id.lastIndexOf("_"));
 		field.addEvent("click", function() {
 			field.focus();
-        });
+		});
 	});
+	
 	// reset ids starting with "opt_"
 	fields = clone.getElements('[id^=opt_]');
 	Array.each(fields, function(field){
@@ -63,12 +70,33 @@ window.addEvent('domready', function() {
 		// do it twice to remove record id and option index
 		field.id = field.id.substring(0, field.id.lastIndexOf("_"));
 	});
+	
 	// reset ids starting with "check_all_"
 	fields = clone.getElements('[id^=check_all_]');
 	Array.each(fields, function(field){
 		field.id = field.id.substring(0, field.id.lastIndexOf("_"));
 		var id = "ctrl" + field.id.substring(field.id.lastIndexOf("_"), field.id.lenth);
 		field.onclick = function() {Backend.toggleCheckboxGroup(this, id);};
+	});
+	
+	// Add checkboxes to headline (for exluding when applying to all)
+	fields = clone.getElements('h3');
+	Array.each(fields, function(field){
+		new Element('input', {
+			'id': 'include_' + field.getNext('[id^=ctrl_]').id,
+			'type': 'checkbox',
+			'checked': true,
+			'title': backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll
+		}).inject(field, 'top');
+	});
+	fields = clone.getElements('legend');
+	Array.each(fields, function(field){
+		new Element('input', {
+			'id': 'include_' + field.getParent('[id^=ctrl_]').id,
+			'type': 'checkbox',
+			'checked': true,
+			'title': backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll
+		}).inject(field, 'top');
 	});
 
 	new Drag.Move(assistant);
@@ -128,21 +156,27 @@ function backendMultiEditAssistantApplyToAll () {
 	// setting assistent fields starting with "ctrl_"
 	var assitantFields = $('multiEditAssistant').getElements('[id^=ctrl_]');
 	Array.each(assitantFields, function(assitantField){
-		var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id + ']');
-		Array.each(fields, function(field){
-			field.value = assitantField.value;
-		});
+		var includeCheckbox = $('include_' + assitantField.id);
+		if (includeCheckbox.checked) {
+			var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id + ']');
+			Array.each(fields, function(field){
+				field.value = assitantField.value;
+			});
+		}
 	});
 
 	// setting assistent fields starting with "opt_"
 	assitantFields = $('multiEditAssistant').getElements('[id^=opt_]');
 	Array.each(assitantFields, function(assitantField){
-		var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id + ']');
-		Array.each(fields, function(field){
-			if (field.value == assitantField.value) {
-				field.checked = assitantField.checked;
-			}
-		});
+		var includeCheckbox = $('include_' + assitantField.getParent('[id^=ctrl_]').id);
+		if (includeCheckbox.checked) {
+			var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id + ']');
+			Array.each(fields, function(field){
+				if (field.value == assitantField.value) {
+					field.checked = assitantField.checked;
+				}
+			});
+		}
 	});
 }
 

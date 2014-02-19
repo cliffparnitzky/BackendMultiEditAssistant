@@ -39,5 +39,6 @@ $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff'] = 'T
  * Messages
  */
 $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutMessageHidedElements'] = 'ACHTUNG: Einige Elemente werden nicht angezeigt, weil die Darstellung in der Tabelle nicht möglich ist!';
+$GLOBALS['TL_LANG']['MSC']['backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll']     = 'Einschließen beim Übernehmen für alle? Deaktivieren sie diese Checkbox um dieses Feld auszuschließen!';
 
 ?>

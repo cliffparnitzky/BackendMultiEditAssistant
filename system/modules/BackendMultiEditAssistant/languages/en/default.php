@@ -39,5 +39,6 @@ $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff'] = 'T
  * Messages
  */
 $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutMessageHidedElements'] = 'ATTENTION: Some fields are not shown because displaying them in the table is not possible!';
+$GLOBALS['TL_LANG']['MSC']['backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll']     = 'Include when applying to all? Deselect this checkbox to exclude this field!';
 
 ?>

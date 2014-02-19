@@ -77,6 +77,7 @@ class BackendMultiEditAssistant extends Backend
 																																		 . "';var backendMultiEditAssistantButtonTableLayoutOn = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOn']
 																																		 . "';var backendMultiEditAssistantButtonTableLayoutOff = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutOff']
 																																		 . "';var backendMultiEditAssistantButtonTableLayoutMessageHidedElements = '" . $GLOBALS['TL_LANG']['MSC']['BackendMultiEditAssistantButtonTableLayoutMessageHidedElements']
+																																		 . "';var backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll = '" . $GLOBALS['TL_LANG']['MSC']['backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll']
  																		 . "';</script>\n$0", $strContent, 1);
 		}
 		return $strContent;

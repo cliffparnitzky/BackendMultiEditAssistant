@@ -48,15 +48,22 @@
 	clear: both;
 }
 
-.tl_assistant_container .tl_tbox .tl_text{
+.tl_assistant_container .tl_tbox .tl_text,
+.tl_assistant_container .tl_tbox .tl_textarea {
 	width: 98%;
 }
 
+.tl_assistant_container .tl_tbox select.tl_chosen,
 .tl_assistant_container .tl_tbox .tl_select,
-.tl_assistant_container .tl_tbox .tl_mselect{
+.tl_assistant_container .tl_tbox .tl_mselect {
+	display: block !important;
+	height: 24px;
+	opacity: 100 !important;
+	visibility: visible !important;
 	width: 100%;
 }
 
-.tl_assistant_container .tl_tbox .styled_select {
-    width: 95%;
+.tl_assistant_container .tl_tbox .styled_select,
+.tl_assistant_container .tl_tbox div.tl_chosen {
+    display: none !important;
 }
