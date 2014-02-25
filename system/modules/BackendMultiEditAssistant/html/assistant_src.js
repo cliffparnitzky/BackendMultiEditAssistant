@@ -53,6 +53,16 @@ window.addEvent('domready', function() {
 	Array.each(fields, function(field){
 		field.destroy();
 	});
+	// remove hidden fields
+	fields = clone.getElements('[type="hidden"]');
+	Array.each(fields, function(field){
+		field.destroy();
+	});
+	// remove name attribute
+	fields = clone.getElements('[name]:not([name=""])');
+	Array.each(fields, function(field){
+		field.erase('name');
+	});
 	
 	// reset ids starting with "ctrl_"
 	fields = clone.getElements('[id^=ctrl_]');
@@ -66,9 +76,25 @@ window.addEvent('domready', function() {
 	// reset ids starting with "opt_"
 	fields = clone.getElements('[id^=opt_]');
 	Array.each(fields, function(field){
+		//remember option index
+		var optionIndex = field.id.substring(field.id.lastIndexOf("_"));
+		// remove option index
 		field.id = field.id.substring(0, field.id.lastIndexOf("_"));
-		// do it twice to remove record id and option index
+		// remove record id
 		field.id = field.id.substring(0, field.id.lastIndexOf("_"));
+		// append option index
+		field.id = field.id + optionIndex;
+		
+		var label = field.getNext('[for^=opt_]');
+		label.set('for', field.id);
+		
+		var parent = field.getParent();
+		if (parent.hasClass('tl_checkbox_single_container')){
+			// add this missing headline here
+			new Element('legend', {
+				'text': label.get('text')
+			}).inject(parent, 'top');
+		}
 	});
 	
 	// reset ids starting with "check_all_"
@@ -77,6 +103,9 @@ window.addEvent('domready', function() {
 		field.id = field.id.substring(0, field.id.lastIndexOf("_"));
 		var id = "ctrl" + field.id.substring(field.id.lastIndexOf("_"), field.id.lenth);
 		field.onclick = function() {Backend.toggleCheckboxGroup(this, id);};
+		
+		var label = field.getNext('[for^=check_all_]');
+		label.set('for', field.id);
 	});
 	
 	// Add checkboxes to headline (for exluding when applying to all)
@@ -84,6 +113,7 @@ window.addEvent('domready', function() {
 	Array.each(fields, function(field){
 		new Element('input', {
 			'id': 'include_' + field.getNext('[id^=ctrl_]').id,
+			'class': 'include_checkbox',
 			'type': 'checkbox',
 			'checked': true,
 			'title': backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll
@@ -93,6 +123,7 @@ window.addEvent('domready', function() {
 	Array.each(fields, function(field){
 		new Element('input', {
 			'id': 'include_' + field.getParent('[id^=ctrl_]').id,
+			'class': 'include_checkbox',
 			'type': 'checkbox',
 			'checked': true,
 			'title': backendMultiEditAssistantCheckboxIncludeWhenApplayingToAll
@@ -170,7 +201,7 @@ function backendMultiEditAssistantApplyToAll () {
 	Array.each(assitantFields, function(assitantField){
 		var includeCheckbox = $('include_' + assitantField.getParent('[id^=ctrl_]').id);
 		if (includeCheckbox.checked) {
-			var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id + ']');
+			var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id.substring(0, assitantField.id.lastIndexOf("_")) + ']');
 			Array.each(fields, function(field){
 				if (field.value == assitantField.value) {
 					field.checked = assitantField.checked;

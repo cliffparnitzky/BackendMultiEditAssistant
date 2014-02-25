@@ -65,5 +65,19 @@
 
 .tl_assistant_container .tl_tbox .styled_select,
 .tl_assistant_container .tl_tbox div.tl_chosen {
-    display: none !important;
+	display: none !important;
+}
+
+.include_checkbox {
+	float: right;
+}
+
+.tl_assistant_container fieldset legend,
+.tl_assistant_container legend,
+.tl_assistant_container h3 {
+	width: 100%;
+	font-weight: bold;
+	border-bottom: 1px solid #d0d0d0;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
 }
