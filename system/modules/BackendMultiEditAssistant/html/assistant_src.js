@@ -188,7 +188,7 @@ function backendMultiEditAssistantApplyToAll () {
 	var assitantFields = $('multiEditAssistant').getElements('[id^=ctrl_]');
 	Array.each(assitantFields, function(assitantField){
 		var includeCheckbox = $('include_' + assitantField.id);
-		if (includeCheckbox.checked) {
+		if (includeCheckbox != null && includeCheckbox.checked) {
 			var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id + ']');
 			Array.each(fields, function(field){
 				field.value = assitantField.value;
@@ -200,7 +200,7 @@ function backendMultiEditAssistantApplyToAll () {
 	assitantFields = $('multiEditAssistant').getElements('[id^=opt_]');
 	Array.each(assitantFields, function(assitantField){
 		var includeCheckbox = $('include_' + assitantField.getParent('[id^=ctrl_]').id);
-		if (includeCheckbox.checked) {
+		if (includeCheckbox != null && includeCheckbox.checked) {
 			var fields = $('main').getElements('.tl_form')[0].getElements('[id^=' + assitantField.id.substring(0, assitantField.id.lastIndexOf("_")) + ']');
 			Array.each(fields, function(field){
 				if (field.value == assitantField.value) {
