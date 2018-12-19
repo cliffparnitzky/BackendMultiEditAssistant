@@ -1,8 +1,8 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2014 Leo Feyer
+ * Copyright (C) 2005-2018 Leo Feyer
  *
  * Formerly known as TYPOlight Open Source CMS.
  *
@@ -21,7 +21,7 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Cliff Parnitzky 2012-2014
+ * @copyright  Cliff Parnitzky 2012-2018
  * @author     Cliff Parnitzky
  * @package    BackendMultiEditAssistant
  * @license    LGPL
@@ -29,8 +29,8 @@
 
 if(TL_MODE == 'BE' && $_GET['act'] == 'editAll' && $_GET['fields'] != null)
 {
-	$GLOBALS['TL_HOOKS']['loadLanguageFile']['BackendMultiEditAssistantHook'] = array('BackendMultiEditAssistant', 'addStaticConfiguration');
-	$GLOBALS['TL_HOOKS']['outputBackendTemplate'][] = array('BackendMultiEditAssistant', 'addTranslatedConfiguration');
+	$GLOBALS['TL_HOOKS']['loadLanguageFile']['BackendMultiEditAssistantHook'] = array('CliffParnitzky\BackendMultiEditAssistant', 'addStaticConfiguration');
+	$GLOBALS['TL_HOOKS']['outputBackendTemplate'][] = array('CliffParnitzky\BackendMultiEditAssistant', 'addTranslatedConfiguration');
 }
  
 ?>

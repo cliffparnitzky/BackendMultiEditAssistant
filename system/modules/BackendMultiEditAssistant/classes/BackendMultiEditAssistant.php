@@ -1,8 +1,8 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
 * Contao Open Source CMS
-* Copyright (C) 2005-2014 Leo Feyer
+* Copyright (C) 2005-2018 Leo Feyer
 *
 * Formerly known as TYPOlight Open Source CMS.
 *
@@ -21,20 +21,25 @@
 * Software Foundation website at <http://www.gnu.org/licenses/>.
 *
 * PHP version 5
-* @copyright  Cliff Parnitzky 2012-2014
+* @copyright  Cliff Parnitzky 2012-2018
 * @author     Cliff Parnitzky
 * @package    BackendMultiEditAssistant
 * @license    LGPL
 */
 
 /**
+ * Run in a custom namespace, so the class can be replaced
+ */
+namespace CliffParnitzky\BackendMultiEditAssistant; 
+
+/**
 * Class BackendMultiEditAssistant
 *
 * Adds misc functions and initializes the assistant.
-* @copyright  Cliff Parnitzky 2012-2014
+* @copyright  Cliff Parnitzky 2012-2018
 * @author     Cliff Parnitzky
 */
-class BackendMultiEditAssistant extends Backend
+class BackendMultiEditAssistant extends \Backend
 {
 	/**
 	 * Initialize the object, import the user class file
@@ -52,12 +57,12 @@ class BackendMultiEditAssistant extends Backend
 	{
 		if ($this->User->backendMultiEditAssistantActive)
 		{
-			$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/html/assistant.css';
-			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/BackendMultiEditAssistant/html/assistant.js';
+			$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/assets/css/assistant.css';
+			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/BackendMultiEditAssistant/assets/js/assistant.js';
 			
 			if ($this->User->backendMultiEditAssistantTableLayoutAlwaysActive)
 			{
-				$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/html/tablelayout.css';
+				$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/assets/css/tablelayout.css';
 			}
 			
 			// make sure the hook is only executed once

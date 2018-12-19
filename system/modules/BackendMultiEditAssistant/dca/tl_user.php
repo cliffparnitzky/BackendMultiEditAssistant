@@ -1,8 +1,8 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
 * Contao Open Source CMS
-* Copyright (C) 2005-2014 Leo Feyer
+* Copyright (C) 2005-2018 Leo Feyer
 *
 * Formerly known as TYPOlight Open Source CMS.
 *
@@ -21,7 +21,7 @@
 * Software Foundation website at <http://www.gnu.org/licenses/>.
 *
 * PHP version 5
-* @copyright  Cliff Parnitzky 2012-2014
+* @copyright  Cliff Parnitzky 2012-2018
 * @author     Cliff Parnitzky
 * @package    BackendMultiEditAssistant
 * @license    LGPL
@@ -29,7 +29,7 @@
 
 if(TL_MODE == 'BE')
 {
-	$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/html/w50_fix.css'; 
+	$GLOBALS['TL_CSS'][] = 'system/modules/BackendMultiEditAssistant/assets/css/w50_fix.css'; 
 }
 
 /**
@@ -76,13 +76,15 @@ $GLOBALS['TL_DCA']['tl_user']['fields']['backendMultiEditAssistantActive'] = arr
 (
 	'label'     => &$GLOBALS['TL_LANG']['tl_user']['backendMultiEditAssistantActive'],
 	'inputType' => 'checkbox',
-	'eval'      => array('tl_class'=>'clr w50')
+	'eval'      => array('tl_class'=>'clr w50'),
+	'sql'       => "char(1) NOT NULL default ''"
 );
 $GLOBALS['TL_DCA']['tl_user']['fields']['backendMultiEditAssistantTableLayoutAlwaysActive'] = array
 (
 	'label'     => &$GLOBALS['TL_LANG']['tl_user']['backendMultiEditAssistantTableLayoutAlwaysActive'],
 	'inputType' => 'checkbox',
-	'eval'      => array('tl_class'=>'w50')
+	'eval'      => array('tl_class'=>'w50'),
+	'sql'       => "char(1) NOT NULL default ''"
 );
 
 ?>

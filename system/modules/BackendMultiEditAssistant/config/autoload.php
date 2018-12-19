@@ -2,13 +2,20 @@
 
 /**
  * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2014 Leo Feyer
- * 
- * @package BackendMultiEditAssistant
- * @link    http://contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
+ *
+ * Copyright (c) 2005-2018 Leo Feyer
+ *
+ * @license LGPL-3.0+
  */
+
+
+/**
+ * Register the namespaces
+ */
+ClassLoader::addNamespaces(array
+(
+	'CliffParnitzky',
+));
 
 
 /**
@@ -16,5 +23,6 @@
  */
 ClassLoader::addClasses(array
 (
-	'BackendMultiEditAssistant' => 'system/modules/BackendMultiEditAssistant/BackendMultiEditAssistant.php',
+	// Classes
+	'CliffParnitzky\BackendMultiEditAssistant' => 'system/modules/BackendMultiEditAssistant/classes/BackendMultiEditAssistant.php',
 ));
