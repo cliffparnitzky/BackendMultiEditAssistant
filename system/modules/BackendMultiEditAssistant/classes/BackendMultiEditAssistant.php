@@ -30,7 +30,7 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
-namespace CliffParnitzky\BackendMultiEditAssistant; 
+namespace CliffParnitzky; 
 
 /**
 * Class BackendMultiEditAssistant
