@@ -1,3 +1,7 @@
+[![Latest Version on Packagist](http://img.shields.io/packagist/v/cliffparnitzky/backend-multi-edit-assistant.svg?style=flat)](https://packagist.org/packages/cliffparnitzky/backend-multi-edit-assistant)
+[![Installations via composer per month](http://img.shields.io/packagist/dm/cliffparnitzky/backend-multi-edit-assistant.svg?style=flat)](https://packagist.org/packages/cliffparnitzky/backend-multi-edit-assistant)
+[![Installations via composer total](http://img.shields.io/packagist/dt/cliffparnitzky/backend-multi-edit-assistant.svg?style=flat)](https://packagist.org/packages/cliffparnitzky/backend-multi-edit-assistant)
+
 Contao Extension: BackendMultiEditAssistant
 ===========================================
 
@@ -7,8 +11,9 @@ Provides an assistant to improve filling in the fields in multi edit mode.
 Installation
 ------------
 
-The extension is not published in contao extension repository.
-Install it manually or via [composer](https://packagist.org/packages/cliffparnitzky/backend-multi-edit-assistant).
+Install the extension via composer: [cliffparnitzky/backend-multi-edit-assistant](https://packagist.org/packages/cliffparnitzky/backend-multi-edit-assistant).
+
+If you prefer to install it manually, download the latest release here: https://github.com/cliffparnitzky/BackendMultiEditAssistant/releases
 
 
 Tracker
