@@ -3,7 +3,7 @@
 	"description":"Provides an assistant to improve filling in the fields in multi edit mode.",
 	"keywords":["contao","backend","multi edit","assistant"],
 	"type":"contao-module",
-	"license":"LGPL-3.0+",
+	"license":"LGPL-3.0-or-later",
 	"authors":[
 		{
 			"name":"Cliff Parnitzky",
